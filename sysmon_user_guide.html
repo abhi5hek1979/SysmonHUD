@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTech SysMon - Detailed User Guide</title>
+    <style>
+        :root {
+            --bg: #0b1220;
+            --panel: #131c2e;
+            --panel-2: #1a2640;
+            --text: #e5edf8;
+            --muted: #9db0cb;
+            --accent: #4ea2ff;
+            --accent-2: #7dd3fc;
+            --ok: #22c55e;
+            --warn: #f59e0b;
+            --danger: #ef4444;
+            --line: #26354f;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #09101b 0%, #0b1220 100%);
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, sans-serif;
+            line-height: 1.6;
+        }
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 28px 20px 60px;
+        }
+        .hero {
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: radial-gradient(circle at top right, rgba(78,162,255,0.18), transparent 35%), var(--panel);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: 2.35rem;
+            line-height: 1.1;
+        }
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 800px;
+        }
+        .meta {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .chip {
+            border: 1px solid var(--line);
+            background: rgba(255,255,255,0.03);
+            border-radius: 999px;
+            padding: 6px 12px;
+            color: var(--accent-2);
+            font-size: 0.92rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+        }
+        .toc, .section {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--panel);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.24);
+        }
+        .toc {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+            padding: 18px;
+        }
+        .toc h2 {
+            margin: 0 0 12px;
+            font-size: 1.05rem;
+        }
+        .toc a {
+            display: block;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 10px;
+        }
+        .toc a:hover {
+            background: rgba(78,162,255,0.12);
+            color: white;
+        }
+        .content {
+            display: grid;
+            gap: 18px;
+        }
+        .section {
+            padding: 22px;
+        }
+        .section h2 {
+            margin: 0 0 10px;
+            font-size: 1.45rem;
+        }
+        .section h3 {
+            margin: 18px 0 8px;
+            font-size: 1.05rem;
+        }
+        .lead {
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+        .callout {
+            border-left: 4px solid var(--accent);
+            background: rgba(78,162,255,0.08);
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+        .callout.warn {
+            border-left-color: var(--warn);
+            background: rgba(245,158,11,0.08);
+        }
+        .callout.danger {
+            border-left-color: var(--danger);
+            background: rgba(239,68,68,0.08);
+        }
+        ol.steps {
+            margin: 12px 0 0 20px;
+            padding: 0;
+        }
+        ol.steps li {
+            margin-bottom: 8px;
+        }
+        ul.flat {
+            margin: 10px 0 0 18px;
+            padding: 0;
+        }
+        code {
+            background: #0c1627;
+            border: 1px solid var(--line);
+            color: #b8dcff;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 0.95em;
+        }
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .mini {
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            border-radius: 14px;
+            padding: 14px;
+        }
+        .mini strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+        th, td {
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+            padding: 10px 8px;
+        }
+        th {
+            color: var(--accent-2);
+            font-weight: 600;
+        }
+        .badge-ok { color: var(--ok); font-weight: 700; }
+        .badge-warn { color: var(--warn); font-weight: 700; }
+        .badge-danger { color: var(--danger); font-weight: 700; }
+        .footer {
+            margin-top: 20px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .grid, .two { grid-template-columns: 1fr; }
+            .toc { position: static; }
+            .hero h1 { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="hero">
+            <h1>ASTech SysMon Detailed User Guide</h1>
+            <p>
+                This guide walks you through SysMon from first launch to daily use. It is written as a practical step-by-step reference for trial users,
+                licensed users, and advanced users who want richer telemetry, HUD layouts, and detailed hover tooltips.
+            </p>
+            <div class="meta">
+                <div class="chip">Windows Desktop App</div>
+                <div class="chip">7-Day Trial</div>
+                <div class="chip">Lite / Pro / Max Tiers</div>
+                <div class="chip">Optional Advanced Telemetry</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <nav class="toc">
+                <h2>Guide Contents</h2>
+                <a href="#start">1. Getting Started</a>
+                <a href="#trial">2. Trial and Activation</a>
+                <a href="#basics">3. Basic Controls</a>
+                <a href="#widgets">4. Widgets Explained</a>
+                <a href="#tooltips">5. Hover Tooltips</a>
+                <a href="#layouts">6. Layouts and Modes</a>
+                <a href="#advanced">7. Advanced Telemetry</a>
+                <a href="#settings">8. Important Settings</a>
+                <a href="#license">9. Licensing and Reset</a>
+                <a href="#troubleshooting">10. Troubleshooting</a>
+            </nav>
+
+            <div class="content">
+                <section class="section" id="start">
+                    <h2>1. Getting Started</h2>
+                    <p class="lead">Use these steps the first time you run SysMon.</p>
+                    <ol class="steps">
+                        <li>Launch <code>SysMon.exe</code>.</li>
+                        <li>The activation window appears on startup.</li>
+                        <li>If this is a new installation, SysMon starts with a <strong>7-day full trial</strong>.</li>
+                        <li>Choose <strong>Continue Trial</strong> to enter the app.</li>
+                        <li>Once the overlay appears, right-click it to open the main menu.</li>
+                    </ol>
+                    <div class="callout">
+                        SysMon is designed to be usable immediately. Core widgets such as CPU, RAM, VRAM, GPU, Network, Disk, Audio, and Power do not require extra downloads.
+                    </div>
+                </section>
+
+                <section class="section" id="trial">
+                    <h2>2. Trial and Activation</h2>
+                    <p class="lead">SysMon uses a trial-first model so users can explore the app before choosing a tier.</p>
+                    <div class="two">
+                        <div class="mini">
+                            <strong>During Trial</strong>
+                            <ul class="flat">
+                                <li>Full feature access is available during the 7-day trial.</li>
+                                <li>The activation window shows live trial time remaining.</li>
+                                <li>You can activate Lite, Pro, or Max at any time.</li>
+                            </ul>
+                        </div>
+                        <div class="mini">
+                            <strong>After Trial Expiry</strong>
+                            <ul class="flat">
+                                <li>The app does not hard-lock completely.</li>
+                                <li>It falls back to a restricted mode with a single Network widget.</li>
+                                <li>License Details and Factory Reset / Key Migration remain available.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h3>How to Activate</h3>
+                    <ol class="steps">
+                        <li>Open the activation window at launch, or use <code>License Details...</code> from the menu.</li>
+                        <li>Paste your activation key into the key field.</li>
+                        <li>Submit the key and let SysMon validate it.</li>
+                        <li>Once accepted, the resolved tier and license type are shown inside the app.</li>
+                    </ol>
+                    <div class="callout warn">
+                        The app can show license type such as <strong>Permanent</strong>, <strong>Reseller</strong>, or <strong>Test</strong> in the License Details view for easy visual verification.
+                    </div>
+                </section>
+
+                <section class="section" id="basics">
+                    <h2>3. Basic Controls</h2>
+                    <p class="lead">The main interaction model is simple: hover, left-click, right-click, and optional hotkeys.</p>
+                    <table>
+                        <tr>
+                            <th>Action</th>
+                            <th>What It Does</th>
+                        </tr>
+                        <tr>
+                            <td>Right-click overlay</td>
+                            <td>Opens the main SysMon menu.</td>
+                        </tr>
+                        <tr>
+                            <td>Hover a widget</td>
+                            <td>Shows the advanced tooltip when hover tooltips are enabled.</td>
+                        </tr>
+                        <tr>
+                            <td>Left-click some widgets</td>
+                            <td>Cycles widget display mode where applicable. Network and Disk now use fixed split widgets.</td>
+                        </tr>
+                        <tr>
+                            <td>Drag overlay</td>
+                            <td>Moves the overlay when lock/interaction rules allow it.</td>
+                        </tr>
+                        <tr>
+                            <td><code>Ctrl + Alt + M</code></td>
+                            <td>Show or hide SysMon.</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="section" id="widgets">
+                    <h2>4. Widgets Explained</h2>
+                    <p class="lead">Each widget provides a compact glance view, while the tooltip gives the detailed breakdown.</p>
+                    <div class="two">
+                        <div class="mini">
+                            <strong>CPU / RAM / VRAM / GPU</strong>
+                            <ul class="flat">
+                                <li>Main utilization or memory status.</li>
+                                <li>Advanced tooltip can show temperatures, clocks, power, top tasks, and extra telemetry.</li>
+                            </ul>
+                        </div>
+                        <div class="mini">
+                            <strong>Network / Disk</strong>
+                            <ul class="flat">
+                                <li>Use fixed split widgets.</li>
+                                <li>Network: left = download, right = upload.</li>
+                                <li>Disk: selected disk only on the widget face, with write on the left and read on the right.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="mini">
+                            <strong>FPS / Audio / Power</strong>
+                            <ul class="flat">
+                                <li>FPS shows live frame/refresh data depending on the available source.</li>
+                                <li>Audio can show output or microphone level.</li>
+                                <li>Power reflects battery / AC state.</li>
+                            </ul>
+                        </div>
+                        <div class="mini">
+                            <strong>Selected Disk Behavior</strong>
+                            <ul class="flat">
+                                <li>The Disk widget face shows the currently selected disk.</li>
+                                <li>The Disk tooltip can show all detected drives with separate graphs.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="tooltips">
+                    <h2>5. Hover Tooltips</h2>
+                    <p class="lead">Advanced tooltips are one of SysMon’s richest features.</p>
+                    <ol class="steps">
+                        <li>Right-click the overlay.</li>
+                        <li>Open <code>System &amp; Startup</code>.</li>
+                        <li>Enable <code>Show Hover Info Tooltips</code>.</li>
+                        <li>Hover the widget you want to inspect.</li>
+                    </ol>
+                    <h3>What the advanced tooltips can show</h3>
+                    <ul class="flat">
+                        <li>CPU: clocks, temperatures, power, voltage, live core grid, top CPU tasks.</li>
+                        <li>RAM: total usage plus top RAM-consuming tasks.</li>
+                        <li>VRAM / GPU: load, temperature, memory, hotspot, fan, PCIe traffic, top GPU or VRAM tasks.</li>
+                        <li>Disk: all detected drives, read/write values, split graphs, capacity details.</li>
+                        <li>Battery: voltage, current, rate, remaining capacity, full capacity, design capacity, degradation when available.</li>
+                    </ul>
+                    <div class="callout">
+                        SysMon omits fields gracefully when data is not available. It does not deliberately print meaningless placeholder lines for missing advanced values.
+                    </div>
+                </section>
+
+                <section class="section" id="layouts">
+                    <h2>6. Layouts and Modes</h2>
+                    <p class="lead">SysMon supports multiple presentation styles depending on how you want it to live on screen.</p>
+                    <table>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Usage</th>
+                        </tr>
+                        <tr>
+                            <td>Floating Overlay</td>
+                            <td>Best for desktop monitoring with draggable widget strips.</td>
+                        </tr>
+                        <tr>
+                            <td>Top-Docked HUD</td>
+                            <td>Pins SysMon across the top edge of the monitor.</td>
+                        </tr>
+                        <tr>
+                            <td>Taskbar Mode</td>
+                            <td>Condenses the view into one active widget at a time.</td>
+                        </tr>
+                        <tr>
+                            <td>Collapsed Mode</td>
+                            <td>Reduces the app to a single selected widget when auto-collapse is enabled.</td>
+                        </tr>
+                        <tr>
+                            <td>Minimal Mode</td>
+                            <td>Shrinks visual overhead while preserving readable split speed displays.</td>
+                        </tr>
+                    </table>
+                    <h3>Visibility changes</h3>
+                    <p>
+                        When you show or hide widgets, SysMon now animates both the widget visibility and the reclaimed space on a shared timeline.
+                        This keeps the transition smoother and avoids abrupt jumps in the strip layout.
+                    </p>
+                </section>
+
+                <section class="section" id="advanced">
+                    <h2>7. Advanced Telemetry</h2>
+                    <p class="lead">SysMon is usable without extras, but optional helpers can enrich the data.</p>
+                    <ol class="steps">
+                        <li>Open <code>Advanced Tooltip / Telemetry Helper...</code> from the menu.</li>
+                        <li>Review which telemetry source is active and what extra data is available.</li>
+                        <li>Optional helpers may improve temperatures, fan data, voltage, power, hotspot, battery, or richer sensor coverage.</li>
+                    </ol>
+                    <div class="callout warn">
+                        Advanced telemetry is an enhancement layer, not a requirement. If a provider is missing or unsupported, SysMon continues to run with native and fallback telemetry.
+                    </div>
+                    <h3>Examples of optional helpers</h3>
+                    <ul class="flat">
+                        <li><strong>SysMonLHM bridge</strong> for richer hardware telemetry.</li>
+                        <li><strong>Core Temp</strong> for CPU temperature / power improvements on systems where fallback sources are limited.</li>
+                        <li><strong>RTSS</strong> for game FPS collection where needed.</li>
+                    </ul>
+                </section>
+
+                <section class="section" id="settings">
+                    <h2>8. Important Settings</h2>
+                    <p class="lead">These menu options matter most for day-to-day use.</p>
+                    <ul class="flat">
+                        <li><code>Show Hover Info Tooltips</code> — enables advanced hover tooltips.</li>
+                        <li><code>CPU Core Info In Tooltips</code> — shows a dynamic per-core load grid inside the CPU tooltip.</li>
+                        <li><code>Widget Graph Update Rate</code> — changes graph smoothness for Network and Disk widgets.</li>
+                        <li><code>Require Shift For Top-Docked HUD Interaction</code> — makes the HUD pass-through unless Shift is held.</li>
+                        <li><code>Restrict Pointer From Top-Docked HUD Region</code> — keeps the pointer out of the HUD strip in top-dock mode.</li>
+                        <li><code>Top-Docked HUD</code> — converts the overlay into a docked strip.</li>
+                        <li><code>Taskbar Mode</code> — switches to one-widget-at-a-time presentation.</li>
+                    </ul>
+                </section>
+
+                <section class="section" id="license">
+                    <h2>9. Licensing and Reset</h2>
+                    <p class="lead">Use these controls when checking activation state or moving to a new key.</p>
+                    <h3>License Details</h3>
+                    <ol class="steps">
+                        <li>Right-click the overlay.</li>
+                        <li>Choose <code>License Details...</code>.</li>
+                        <li>Review the current status, tier, key type, integrity state, and expiry details.</li>
+                    </ol>
+                    <h3>Factory Reset / Key Migration</h3>
+                    <ol class="steps">
+                        <li>Open the menu and select <code>Factory Reset / Key Migration...</code>.</li>
+                        <li>Type the requested confirmation text.</li>
+                        <li>SysMon clears the paid key state and restarts.</li>
+                        <li>If the trial is still valid, the remaining trial tenure is preserved.</li>
+                    </ol>
+                    <div class="callout danger">
+                        Trial users do not receive the same migration path as paid users. Reset and licensing behavior depends on current trial or paid status.
+                    </div>
+                </section>
+
+                <section class="section" id="troubleshooting">
+                    <h2>10. Troubleshooting</h2>
+                    <h3>Tooltip data is missing</h3>
+                    <ul class="flat">
+                        <li>Confirm hover tooltips are enabled.</li>
+                        <li>Open the telemetry helper and check whether optional providers are running.</li>
+                        <li>Remember that SysMon only displays data that is actually available from live telemetry.</li>
+                    </ul>
+                    <h3>Network or Disk graphs seem too fast or too noisy</h3>
+                    <ul class="flat">
+                        <li>Use <code>Widget Graph Update Rate</code> to choose a smoother setting.</li>
+                        <li>SysMon already smooths the displayed Network and Disk rates using a short rolling live average.</li>
+                    </ul>
+                    <h3>Minimal mode text looks cramped</h3>
+                    <ul class="flat">
+                        <li>Recent builds use a compact speed format and larger readability floor for split speed widgets.</li>
+                        <li>If needed, disable minimal mode for the full text presentation.</li>
+                    </ul>
+                    <h3>Trial or activation questions</h3>
+                    <ul class="flat">
+                        <li>Use the startup activation window or <code>License Details...</code> to see current state clearly.</li>
+                        <li>If a key is rejected, verify that it matches the intended machine and tier.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <div class="footer">
+            ASTech SysMon User Guide - HTML manual for app usage, licensing, widgets, modes, and telemetry.
+        </div>
+    </div>
+</body>
+</html>
