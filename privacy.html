@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | SysMonHUD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050b14;
+            --card-bg: #0d1624;
+            --accent-color: #00f2ff;
+            --text-primary: #e0e6ed;
+            --text-secondary: #94a3b8;
+            --border-glow: rgba(0, 242, 255, 0.2);
+            --table-header: #1a2638;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Futuristic Background Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 100%, 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 2px solid var(--border-glow);
+            padding-bottom: 30px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px var(--accent-color));
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+        }
+
+        h2::before {
+            content: ">";
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* Table Styling */
+        .data-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-glow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(13, 22, 36, 0.5);
+        }
+
+        th {
+            background: var(--table-header);
+            color: var(--accent-color);
+            text-align: left;
+            padding: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            border-top: 1px solid var(--border-glow);
+            font-size: 0.9rem;
+        }
+
+        tr:hover td {
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .badge-local { background: rgba(0, 255, 127, 0.1); color: #00ff7f; border: 1px solid #00ff7f; }
+        .badge-api { background: rgba(255, 191, 0, 0.1); color: #ffbf00; border: 1px solid #ffbf00; }
+        .badge-security { background: rgba(0, 242, 255, 0.1); color: var(--accent-color); border: 1px solid var(--accent-color); }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAEAAElEQVR4nOz9SYxl2ZkmiH1nuPN987PRB/MxRs7JHCozS2R3VzeqJDUKvSAFbXuh2klAb7QkY6mFoEWjF12LBgoCJCBjIQmqFrJVVUJRVagSq5JJMoLhZES4h0/mNpu9+c7nHOE/95m7MxhkBjOTTJJxPtBoFubP3rvvvfvuP33/9wEODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OD4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OvwjsF/6rg4PDZ/kaYH6J236a+2C/4L4dHBx+zZC/7gd0cHD4tYP9Ld3ub1owfNq/d8mBg8OvAa4D4ODwu//5/LRV/m/K9eBvIwFwSYSDw18B1wFwcPjtAftbCnzmr7j9Tz3Ot9bf3) alt="SysMon Logo" class="logo">
+        <h1>SysMonHUD</h1>
+        <div class="subtitle">Privacy Protocol & Data Integrity System</div>
+    </header>
+
+    <section id="introduction">
+        <h2>Executive Summary</h2>
+        <p>At <span class="highlight">ASTechAI</span>, your privacy is hardcoded into our philosophy. SysMonHUD is a professional-grade telemetry tool designed to monitor system performance in real-time. We operate on a <span class="highlight">Local-First</span> principle: your system data stays on your machine.</p>
+    </header>
+
+    <section id="telemetry">
+        <h2>System Telemetry Audit</h2>
+        <p>The application accesses hardware sensors to provide the following metrics. All data in this category is processed in volatile memory and never leaves your device.</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Metrics Monitored</th>
+                        <th>Processing Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">CPU</span></td>
+                        <td>Load, Temperature, Clock Speed, Fan RPM, Voltage, Power (W)</td>
+                        <td><span class="badge badge-local">Local Only</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">GPU</span></td>
+                        <td>Core/Hotspot Temp, VRAM Usage, PCIe Throughput, Fan Speed</td>
+                        <td><span class="badge badge-local">Local Only</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Network</span></td>
+                        <td>Real-time Download & Upload Speeds</td>
+                        <td><span class="badge badge-local">Local Only</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Battery</span></td>
+                        <td>Voltage, Charge/Discharge Rate, Remaining Capacity, Health</td>
+                        <td><span class="badge badge-local">Local Only</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">Audio</span></td>
+                        <td>Peak Audio Levels (Visualizer mode only)</td>
+                        <td><span class="badge badge-local">Local Only</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><small>*Audio permission is used only to calculate visual peaks; no voice or sound is recorded or transmitted.</small></p>
+    </section>
+
+    <section id="capabilities">
+        <h2>Required Capabilities</h2>
+        <p>SysMonHUD requires specific system access to function correctly. Here is the transparency breakdown:</p>
+
+        <div class="data-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Capability</th>
+                        <th>Justification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Windows</td>
+                        <td>WMI / PDH Access</td>
+                        <td>Fetching hardware sensor data (Temp, Load, RPM).</td>
+                    </tr>
+                    <tr>
+                        <td>Android</td>
+                        <td>SYSTEM_ALERT_WINDOW</td>
+                        <td>Displaying the HUD overlay over other applications.</td>
+                    </tr>
+                    <tr>
+                        <td>Android</td>
+                        <td>POST_NOTIFICATIONS</td>
+                        <td>Continuous speed monitoring in the notification shade.</td>
+                    </tr>
+                    <tr>
+                        <td>Universal</td>
+                        <td>INTERNET</td>
+                        <td>License verification and Public IP check.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="security">
+        <h2>Data Integrity</h2>
+        <p>We perform automated <span class="highlight">Integrity Checks</span> to ensure the SysMonHUD binary has not been tampered with. This protects you from malware injections and ensures the metrics displayed are accurate and untainted.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Command</h2>
+        <p>For privacy inquiries or license support, reach out via our secure channels:</p>
+        <div class="contact-box">
+            <div class="contact-item">
+                <strong>Email Support</strong><br>
+                <a href="mailto:systemmonitor.admin@gmail.com">systemmonitor.admin@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ASTech | SysMonHUD Security Protocol</p>
+        <p>Effective Date: April 30, 2026</p>
+    </footer>
+</div>
+
+</body>
+</html>
