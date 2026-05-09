@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MagicLLM Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    body {
+      margin: 0;
+      background: Canvas;
+      color: CanvasText;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    h2 {
+      margin-top: 32px;
+      border-top: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+      padding-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid color-mix(in srgb, CanvasText 22%, transparent);
+      padding: 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: color-mix(in srgb, CanvasText 8%, transparent);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+    }
+
+    .summary {
+      padding: 16px;
+      border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+      background: color-mix(in srgb, CanvasText 5%, transparent);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>MagicLLM Privacy Policy</h1>
+  <p><strong>Effective date:</strong> May 9, 2026</p>
+
+  <section class="summary">
+    <p>
+      MagicLLM is designed as a local-first AI assistant. The app does not operate, upload to, or store user data on a MagicLLM private server. Chat history, selected model references, local settings, captured images, downloaded model files, and other app data are stored on the user's device unless the user chooses a feature that sends data to a third-party or user-configured service.
+    </p>
+  </section>
+
+  <h2>1. Scope</h2>
+  <p>
+    This Privacy Policy explains how MagicLLM handles information on Android phones and Wear OS companion devices. It covers the app's local AI model features, remote endpoint option, voice input, image input, file/model management, media/search tools, WhatsApp notification reader, device actions, and Wear OS synchronization.
+  </p>
+
+  <h2>2. Local-First Data Handling</h2>
+  <p>
+    MagicLLM does not send user data to a MagicLLM-owned private server. By default, local model inference, local chat state, local model configuration, downloaded or imported models, tokenizer files, temporary camera images, and app preferences remain on the user's device.
+  </p>
+  <p>
+    Some optional features require internet access or communication with services selected by the user. When those features are used, the relevant request data is sent directly from the user's device to the chosen service, not to a MagicLLM private server.
+  </p>
+
+  <h2>3. Information Stored On Device</h2>
+  <p>MagicLLM may store the following information locally on the user's device:</p>
+  <ul>
+    <li>Chat messages, assistant responses, tool results, and conversation state.</li>
+    <li>User-selected model file URIs and locally copied model/tokenizer files.</li>
+    <li>Remote endpoint settings entered by the user, such as an OpenAI-compatible base URL.</li>
+    <li>API tokens or account tokens entered by the user for optional services, such as gated model downloads or user-selected remote endpoints.</li>
+    <li>Temporary camera images, image attachments, media cache files, and generated local file references.</li>
+    <li>Recent WhatsApp notification summaries captured only after the user enables Android Notification Listener access.</li>
+    <li>App settings, feature toggles, backend selection, and connection status.</li>
+  </ul>
+
+  <h2>4. Information Sent Outside The Device</h2>
+  <p>
+    MagicLLM does not upload user data to a MagicLLM private backend. Data may leave the device only when a user uses a feature that necessarily contacts another service. Examples include:
+  </p>
+  <ul>
+    <li><strong>User-configured remote inference:</strong> if the user selects a remote OpenAI-compatible backend, prompts, conversation context, selected image/text inputs, and related request data are sent directly to the configured endpoint, such as a local Ollama server, llama.cpp server, OpenAI-compatible service, or another endpoint entered by the user.</li>
+    <li><strong>Web, media, and model search tools:</strong> search terms and request metadata may be sent to public search/media/model services when the user invokes those tools.</li>
+    <li><strong>Model and tokenizer downloads:</strong> URLs, repository identifiers, and download requests may be sent to Hugging Face or other download hosts selected by the user.</li>
+    <li><strong>Wear OS sync:</strong> selected chat, prompt, device, or media data may be sent through Google Play Services' Wear OS data layer to the user's paired watch.</li>
+    <li><strong>Phone, email, WhatsApp, maps, browser, and media intents:</strong> when the user asks the app to open another app or service, the relevant content may be passed to that app for the requested action.</li>
+  </ul>
+  <p>
+    Third-party services process data under their own privacy policies. Users should only configure remote endpoints and third-party services they trust.
+  </p>
+
+  <h2>5. Permissions And Why They Are Used</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Permission or Access</th>
+        <th>Why MagicLLM Requests It</th>
+        <th>Data Handling</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>INTERNET</code></td>
+        <td>Connects to user-configured remote AI endpoints, local-network servers such as Ollama, model/tokenizer downloads, public search/media/model APIs, and web content opened by app tools.</td>
+        <td>No MagicLLM private server receives this data. Requests go directly to the selected endpoint or public service used by the feature.</td>
+      </tr>
+      <tr>
+        <td><code>RECORD_AUDIO</code></td>
+        <td>Enables voice input, speech recognition, voice command capture, and trigger-word or assistant microphone features.</td>
+        <td>Audio is used for the requested voice feature. MagicLLM does not upload audio to a MagicLLM private server. If Android/system speech recognition or a user-selected remote AI endpoint is used, audio-derived text or related data may be processed by that service.</td>
+      </tr>
+      <tr>
+        <td><code>FOREGROUND_SERVICE</code> and <code>FOREGROUND_SERVICE_MICROPHONE</code></td>
+        <td>Keeps voice command and trigger-word services running visibly with an Android foreground notification when microphone features are active.</td>
+        <td>Used only to support ongoing voice features. The foreground notification lets the user know the service is running.</td>
+      </tr>
+      <tr>
+        <td><code>CAMERA</code></td>
+        <td>Allows the user to capture an image for local visual input, model interaction, or attachment processing.</td>
+        <td>Captured images are stored temporarily or in app-controlled storage on the device unless the user sends them to a configured remote inference endpoint or shares them through another app.</td>
+      </tr>
+      <tr>
+        <td><code>READ_EXTERNAL_STORAGE</code></td>
+        <td>Supports selecting and reading local files, images, models, tokenizers, and media on Android versions where this permission applies.</td>
+        <td>Files are read for user-requested local processing. MagicLLM does not upload files to a MagicLLM private server.</td>
+      </tr>
+      <tr>
+        <td><code>MANAGE_EXTERNAL_STORAGE</code></td>
+        <td>Supports local model workflows that require access to large model files stored outside the app sandbox, including GGUF/PTE model files and related tokenizer/projector files.</td>
+        <td>Used to locate and load user-selected local models on the device. The app does not scan and upload the user's storage to a MagicLLM private server.</td>
+      </tr>
+      <tr>
+        <td><code>CALL_PHONE</code></td>
+        <td>Allows the assistant to start a phone call when the user asks for a phone call action and the permission has been granted. If not granted, the app opens the dialer for user confirmation.</td>
+        <td>Phone numbers are used only to perform the requested call/dial action. MagicLLM does not upload call data to a MagicLLM private server.</td>
+      </tr>
+      <tr>
+        <td>Notification Listener access</td>
+        <td>Allows the optional "MagicLLM WhatsApp Reader" service to capture recent WhatsApp notification text after the user explicitly enables notification listener access in Android settings.</td>
+        <td>The app reads only notification data available after access is granted. It does not silently read historical WhatsApp chat databases. Captured summaries are kept locally for assistant responses unless the user sends related content to a configured remote endpoint.</td>
+      </tr>
+      <tr>
+        <td>FileProvider access</td>
+        <td>Allows MagicLLM to safely share app-created files, such as temporary camera images or cached attachments, with Android camera or sharing flows.</td>
+        <td>File access is granted only through Android's URI permission mechanism for the relevant user action.</td>
+      </tr>
+      <tr>
+        <td>Wear OS Data Layer access</td>
+        <td>Supports companion watch features, prompt transfer, chat status, media transfer, and device-to-device app interactions between the phone and the user's paired watch.</td>
+        <td>Data is sent through Google Play Services to the user's paired Wear OS device. MagicLLM does not route this data through a MagicLLM private server.</td>
+      </tr>
+      <tr>
+        <td>Package visibility queries</td>
+        <td>Lets the app detect or interact with services such as text-to-speech, dialer, email, browser, WhatsApp, and WhatsApp Business for user-requested actions.</td>
+        <td>Used locally by Android package resolution. MagicLLM does not upload installed-app lists to a MagicLLM private server.</td>
+      </tr>
+      <tr>
+        <td>Vulkan hardware features</td>
+        <td>Requires compatible Vulkan compute support for local native model acceleration.</td>
+        <td>This is a device capability requirement, not personal data collection.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6. Optional Device Actions</h2>
+  <p>
+    MagicLLM includes tools that can open Android system screens or other apps for user-requested tasks such as dialing a number, composing email, opening WhatsApp with a prefilled message, launching maps, changing brightness or volume, controlling media, setting alarms/timers, opening web pages, copying text to the clipboard, or downloading media/model files.
+  </p>
+  <p>
+    These actions are initiated in response to user requests. When another app or Android system component is opened, that app or component may receive the content needed to complete the action.
+  </p>
+
+  <h2>7. Remote AI Endpoint Mode</h2>
+  <p>
+    MagicLLM can run local models on the device. It can also connect to a user-configured OpenAI-compatible endpoint. Remote mode is optional. If remote mode is enabled, the user's prompts, relevant conversation context, selected attachments, and endpoint credentials may be sent directly to the configured endpoint.
+  </p>
+  <p>
+    MagicLLM does not control third-party or user-hosted endpoints. Users are responsible for choosing endpoints they trust and for understanding those endpoints' privacy practices.
+  </p>
+
+  <h2>8. Local Models, Files, And Downloads</h2>
+  <p>
+    MagicLLM supports local model loading and model/tokenizer downloads. Large model files, tokenizer files, projector files, and imported documents remain on the user's device unless the user shares them, sends them to a selected remote endpoint, or downloads them from a third-party host.
+  </p>
+  <p>
+    Downloads requested through Android's DownloadManager are handled by Android and the selected download host. MagicLLM does not mirror downloaded files through a MagicLLM private server.
+  </p>
+
+  <h2>9. Chat History And Generated Content</h2>
+  <p>
+    Chat messages, assistant responses, generated text, tool outputs, and settings are stored locally on the user's device. The user can remove app data by clearing MagicLLM's app storage or uninstalling the app. If Android backup is enabled for the device, some app data may be included in Android backup according to Android's backup settings and the app's backup configuration.
+  </p>
+
+  <h2>10. Children</h2>
+  <p>
+    MagicLLM is not intended to collect personal information from children. The app does not knowingly collect or upload children's data to a MagicLLM private server.
+  </p>
+
+  <h2>11. Security</h2>
+  <p>
+    MagicLLM stores data locally using Android app storage and Android platform security controls. Some sensitive settings may use Android security libraries when configured by the app. Users should protect their device lock screen, only install the app from trusted sources, and only configure remote endpoints and tokens they trust.
+  </p>
+
+  <h2>12. User Controls</h2>
+  <ul>
+    <li>Users can deny or revoke Android runtime permissions in system settings.</li>
+    <li>Users can disable notification listener access in Android notification access settings.</li>
+    <li>Users can stop foreground voice services from the app or Android notification/system controls.</li>
+    <li>Users can remove local app data by clearing storage or uninstalling the app.</li>
+    <li>Users can avoid remote data transfer by using local model mode and not invoking internet-backed tools.</li>
+    <li>Users can remove or change remote endpoint URLs and tokens in app settings.</li>
+  </ul>
+
+  <h2>13. No Sale Of Personal Data</h2>
+  <p>
+    MagicLLM does not sell user personal data. MagicLLM does not operate an advertising profile service, analytics broker, or private cloud database for user content.
+  </p>
+
+  <h2>14. Changes To This Policy</h2>
+  <p>
+    This policy may be updated when the app's features, permissions, or data handling change. The effective date at the top of this document identifies the current version.
+  </p>
+
+  <h2>15. Contact</h2>
+  <p>
+    For privacy questions, contact the developer or distributor of MagicLLM through the same channel where the app was provided.
+  </p>
+</main>
+</body>
+</html>
